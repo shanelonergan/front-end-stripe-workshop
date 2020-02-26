@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// => imports
+import React, { useState } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// => URLs
+const BASE_URL = 'http://localhost:3000'
+const CHARGES_URL = BASE_URL + '/charges'
+
+// => app component
+export default function App() {
+
+    const [price, setPrice] = useState(100)
+
+    const handlePrice = (event) => {
+        setPrice(event.target.value)
+    }
+
+    return (
+        <div>
+            <h1>Stripe Example Project</h1>
+            <form>
+                <label>Price:</label>
+                <input
+                    type="number"
+                    value={ price }
+                    onChange={ handlePrice }
+                />
+            </form>
+
+            // Stripe Checkout Goes Here
+
+        </div>
+    )
 }
-
-export default App;
